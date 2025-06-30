@@ -1,0 +1,25 @@
+pipeline {
+    agent { label 'python' }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Install dependencies') {
+            steps {
+                bat '''
+                pip install python-dotenv requests
+                '''
+            }
+        }
+
+        stage('Run program') {
+            steps {
+                bat "cd CI && python main.py"
+            }
+        }
+    }
+}
