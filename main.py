@@ -136,7 +136,7 @@ def main():
                 f"[ERROR] SBOM validation failed for {sbom_file}:\n{validation_error}",
                 report_file
             )
-            recipient_list = get_contact_email(project_name) or ["isam.Al-Shehabi@iq-image.com"]
+            recipient_list = get_contact_email(project_name) or [""]
             for recipient_email in recipient_list:
                 send_final_report_email(
                     project_name=project_name,
@@ -159,7 +159,7 @@ def main():
                 f"[ERROR] Missing project name or version in SBOM: {sbom_file}",
                 report_file
             )
-            recipient_list = get_contact_email("UnknownProject") or ["isam.Al-Shehabi@iq-image.com"]
+            recipient_list = get_contact_email("UnknownProject") or [""]
             for recipient_email in recipient_list:
                 send_final_report_email(
                     project_name="UnknownProject",
@@ -184,7 +184,7 @@ def main():
         affected_version_id, project_id, error = resolve_redmine_ids(project_name, project_version)
         if error:
             write_report_entry(error, report_file)
-            recipient_list = get_contact_email(project_name) or ["isam.Al-Shehabi@iq-image.com"]
+            recipient_list = get_contact_email(project_name) or [""]
             for recipient_email in recipient_list:
                 send_final_report_email(
                     project_name=project_name,
@@ -211,7 +211,7 @@ def main():
                 project_version
             )
 
-        recipient_list = get_contact_email(project_name) or ["isam.Al-Shehabi@iq-image.com"]
+        recipient_list = get_contact_email(project_name) or []
         for recipient_email in recipient_list:
             send_final_report_email(
                 project_name=project_name,
