@@ -107,9 +107,9 @@ def handle_component(component, affected_version_id, project_id, report_file, ht
             else:
                 unchanged_cves.append(cve_id)
         else:
-            create_redmine_issue(subject, description, affected_version_id, project_id)
+            create_cves = create_redmine_issue(issue_id, subject, description, affected_version_id, project_id)
             html_issues.append(
-                f'<p>Created new issue <a href="{REDMINE_URL}/issues?subject=~{cve_id}">{cve_id}</a></p>'
+                f'<p>Created new issue <a href="{REDMINE_URL}/issues/{issue_id}">#{issue_id}</a></p>'
             )
             write_report_entry(f"Created new issue for {cve_id}", report_file)
             created_cves.append(cve_id)
